@@ -1,4 +1,5 @@
 // import banner1 from "../../assets/image_01.jpeg";
+import { NavLink } from "react-router-dom";
 import banner2 from "../../assets/banner.jpg";
 
 export default function Banner() {
@@ -11,14 +12,12 @@ export default function Banner() {
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-start text-neutral-content">
-        <div className="max-w-md text-center">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+        <div className="md:w-1/2 w-full text-center">
+          <h1 className="mb-5 text-5xl text-white font-bold">Welcome to<br></br>Tasty Delights!</h1>
           <p className="mb-5 ">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          Your go-to destination for discovering mouthwatering recipes, cooking tips, and culinary inspiration. Whether you are a seasoned chef or a kitchen novice, we have something for everyone. Dive into our extensive collection of recipes and embark on a delicious journey!
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <NavLink to={'/'} className="btn btn-primary">Explore Recipes</NavLink>
         </div>
       </div>
     </div>
