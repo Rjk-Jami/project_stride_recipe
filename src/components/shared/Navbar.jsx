@@ -44,7 +44,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <a className=" text-xl font-bold">Tasty Delights</a>
+        <a className=" text-xl font-bold">Tasty<br className="block md:hidden"></br> Delights</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex items-center gap-6 px-1">
@@ -71,12 +71,12 @@ export default function Navbar() {
       ) : (
         <div className="navbar-end flex gap-4">
           <div>
-            <button className="btn" onClick={handleLogout}>
+            <button className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16" onClick={handleLogout}>
               Logout
             </button>
           </div>
           <div>
-            <Link to={"/dashboard"} className="btn">
+            <Link to={"/dashboard"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16">
               Dashboard
             </Link>
           </div>

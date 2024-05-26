@@ -3,10 +3,11 @@ import {
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase.config";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/Auth/GoogleLogin";
 
 import { useEffect } from "react";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 export default function Register() {
   const [user, loading] = useAuthState(auth);
@@ -30,14 +31,19 @@ export default function Register() {
     }
   }, [user, loading, navigate, from]);
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-base-200 relative">
+       <NavLink to={from}>
+        {" "}
+        <div className="flex gap-2 items-center absolute left-0 top-0 z-40 m-5 hover:text-blue-600">
+          <FaLongArrowAltLeft />
+          <p>Go Back</p>
+        </div>
+      </NavLink>
       <div className="hero-content grid grid-cols-2 w-full mx-auto">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          Becoming a member of Tasty Delights unlocks a world of culinary adventures. Save your favorite recipes, share your creations, and connect with our community of food enthusiasts. Sign up now and start your delicious journey with us!
           </p>
         </div>
         <div className=" card shadow-2xl bg-base-100 max-w-lg">

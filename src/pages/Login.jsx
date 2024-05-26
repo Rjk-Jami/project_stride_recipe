@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import GoogleLogin from "../components/Auth/GoogleLogin";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase.config";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 export default function Login() {
   const [user, loading] = useAuthState(auth);
@@ -16,14 +17,21 @@ export default function Login() {
     }
   }, [user, loading, navigate, from]);
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-base-200 relative">
+      <NavLink to={from}>
+        {" "}
+        <div className="flex gap-2 items-center absolute left-0 top-0 z-40 m-5 hover:text-blue-600">
+          <FaLongArrowAltLeft />
+          <p>Go Back</p>
+        </div>
+      </NavLink>
       <div className="hero-content grid lg:grid-cols-2">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Access your favorite recipes, save new ones, and connect with our
+            vibrant community of food enthusiasts. Simply log in to continue
+            your culinary journey with us.
           </p>
           <img src="" alt="" />
         </div>

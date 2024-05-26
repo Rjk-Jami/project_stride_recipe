@@ -37,15 +37,21 @@ export default function Home() {
       <Banner />
 
       <div className="mx-16">
-        <h1 className="text-4xl my-20 text-center">Our Recipe Categories </h1>
+       <div className="my-20">
+       <h1 className="text-4xl  text-center ">Our Recipe Categories </h1>
+       <div className=" lg:w-1/3 w-1/2 h-[3px] bg-black mx-auto mt-3"></div>
+       </div>
         <div className="grid grid-cols-4 gap-6">
           {categoris?.map((category) => (
             <CategoryCard key={category?.id} category={category} />
           ))}
         </div>
       </div>
-      <div className="mx-16">
-        <h1 className="text-4xl my-20 text-center">Our Newest Recipes </h1>
+      <div className="mx-16 mb-10">
+        <div className="my-20">
+        <h1 className="text-4xl  text-center">Our Newest Recipes </h1>
+        <div className=" lg:w-1/3 w-1/2 h-[3px] bg-black mx-auto mt-3"></div>
+        </div>
         <div className="grid grid-cols-4 gap-6">
           {recipes
             ?.reverse()

@@ -1,15 +1,19 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/firebase.config";
+import { FcGoogle } from "react-icons/fc";
 
 export default function GoogleLogin() {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle ,user] = useSignInWithGoogle(auth);
+  console.log(user)
   return (
-    <div>
+    <div className="w-1/2 mx-auto flex justify-center flex-col items-center">
+      <div className="divider divider-neutral">or</div>
       <button
         onClick={() => signInWithGoogle()}
-        className=" px-5 py-3 bg-yellow-500 text-white w-full rounded-lg"
+        className="btn btn-circle"
       >
-        Google Login
+       <FcGoogle className="text-3xl"/>
+
       </button>
     </div>
   );

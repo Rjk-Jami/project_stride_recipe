@@ -3,16 +3,16 @@ import pizza from "../../assets/pizza.webp";
 
 export default function RecepiCard({ recipe }) {
   return (
-    <div className="card  bg-base-100 shadow-xl">
+    <div className="card  bg-base-100 shadow-xl border border-white hover:border-black">
       <figure>
         <img src={pizza} alt="food" className="max-w-50" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{recipe?.title}</h2>
-        <h2 className="card-title">{recipe?.price}</h2>
+        <h2 className="card-title">Price: {recipe?.price}</h2>
         <p>
           {recipe?.description?.length > 30
-            ? recipe?.description?.slice(0, 30)
+            ? recipe?.description?.slice(0, 25) + '...'
             : recipe?.description}
         </p>
         <div className="card-actions justify-end">
