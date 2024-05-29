@@ -81,14 +81,6 @@
       "category": "Chinese"
     },
     {
-      "id": "11",
-      "title": "Butter Chicken",
-      "price": 16.99,
-      "description": "Tender chicken cooked in a rich, creamy tomato gravy.",
-      "image": "https://example.com/images/butter-chicken.jpg",
-      "category": "Indian"
-    },
-    {
       "id": "12",
       "title": "Rogan Josh",
       "price": 17.99,
@@ -111,20 +103,6 @@
       "description": "A hearty Japanese noodle soup with meat, vegetables, and broth.",
       "image": "https://example.com/images/ramen.jpg",
       "category": "Japanese"
-    },
-    {
-      "id": "147",
-      "title": "test1111",
-      "price": "7878",
-      "category": "Mexican",
-      "descrition": "test"
-    },
-    {
-      "id": "121212",
-      "title": "Test ",
-      "price": "121",
-      "category": "Mexican",
-      "description": "test descittion"
     }
   ],
   "categories": [
@@ -170,5 +148,3 @@
     }
   ]
 }
-
-

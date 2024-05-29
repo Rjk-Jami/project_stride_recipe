@@ -31,7 +31,7 @@ export default function Home() {
     //   .then((data) => setCategories(data));
   }, []);
 
-  console.log("hi");
+  // console.log("hi");
   return (
     <div>
       <Banner />

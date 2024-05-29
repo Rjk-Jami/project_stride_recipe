@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 const EditRecipe = () => {
   const { id } = useParams();
-
   const [recipeDetails, setRecipeDetails] = useState();
   const [categories, setCategories] = useState();
 
@@ -43,11 +43,26 @@ const EditRecipe = () => {
       description,
     };
 
-    await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData);
+    await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData)
+    .then(res=>{
+      console.log(res)
+    })
   };
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+
   return (
     <div className="w-full px-16">
+      <div className="flex justify-between items-center">
       <h1 className="text-4xl mb-4">Add Recipe</h1>
+      <NavLink to={'/dashboard/manage-recipes'}>
+        
+        <div className="flex gap-2 items-center  z-40 m-5 hover:text-blue-600">
+          <FaLongArrowAltLeft />
+          <p>Go Back</p>
+        </div>
+      </NavLink>
+      </div>
       <form onSubmit={handleCreateRecipe} className="w-full">
         <div className="mb-4">
           <label htmlFor="">Title </label>

@@ -1,12 +1,17 @@
 import { useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/firebase.config";
 import { Link, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export default function DashbaordLayout() {
-  const [signOut] = useSignOut(auth);
+  const {user,
+    googleLogin, 
+    EmailPassLogin,
+    createUser,
+    logout,
+    authLoading} =useAuth()
 
   const handleLogout = async () => {
-    await signOut();
+    await logout();
   };
   return (
     <div className="drawer lg:drawer-open">

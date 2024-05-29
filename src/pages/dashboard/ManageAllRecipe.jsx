@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import RecipeRow from "../../components/cards/RecipeRow";
 
 export default function ManageAllRecipe() {
-  const [recipes, setRescipes] = useState();
+  const [recipes, setRecipes] = useState();
   useEffect(() => {
     async function load() {
       const data = await axios.get("http://localhost:3000/recipes");
       if (data?.status === 200) {
-        setRescipes(data?.data);
+        setRecipes(data?.data);
       }
     }
     load();
@@ -29,7 +29,7 @@ export default function ManageAllRecipe() {
         </thead>
         <tbody>
           {recipes?.map((recipe) => (
-            <RecipeRow key={recipe?.id} recipe={recipe} />
+            <RecipeRow key={recipe?.id} recipe={recipe} setRecipes={setRecipes}/>
           ))}
         </tbody>
       </table>

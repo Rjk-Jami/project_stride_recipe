@@ -17,7 +17,7 @@ export default function Banner() {
           <p className="mb-5 ">
           Your go-to destination for discovering mouthwatering recipes, cooking tips, and culinary inspiration. Whether you are a seasoned chef or a kitchen novice, we have something for everyone. Dive into our extensive collection of recipes and embark on a delicious journey!
           </p>
-          <NavLink to={'/'} className="btn btn-primary">Explore Recipes</NavLink>
+          <NavLink to={'/'} className="btn btn-neutral">Explore Recipes</NavLink>
         </div>
       </div>
     </div>

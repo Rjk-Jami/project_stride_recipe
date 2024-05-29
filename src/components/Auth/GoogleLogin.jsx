@@ -1,5 +1,4 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase/firebase.config";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 

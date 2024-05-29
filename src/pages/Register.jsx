@@ -2,25 +2,29 @@ import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/firebase.config";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/Auth/GoogleLogin";
 
 import { useEffect } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 export default function Register() {
-  const [user, loading] = useAuthState(auth);
-  const navigate = useNavigate();
-  const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+  const {user,
+    googleLogin, 
+    EmailPassLogin,
+    createUser,
+    logout,
+    authLoading} =useAuth() 
+     const navigate = useNavigate();
+  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    createUserWithEmailAndPassword(email, password);
+   await createUser(email, password);
   };
 
   let from = location.state?.from?.pathname || "/";
@@ -29,7 +33,7 @@ export default function Register() {
     if (user) {
       navigate(from, { replace: true });
     }
-  }, [user, loading, navigate, from]);
+  }, [user, authLoading, navigate, from]);
   return (
     <div className="hero min-h-screen bg-base-200 relative">
        <NavLink to={from}>

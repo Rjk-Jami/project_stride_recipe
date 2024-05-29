@@ -1,13 +1,18 @@
-import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase/firebase.config";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
-export default function Navbar() {
-  const [user] = useAuthState(auth);
-  const [signOut] = useSignOut(auth);
+import React from 'react';
 
+const Navbar = () => {
+  const {user,
+    googleLogin, 
+    EmailPassLogin,
+    createUser,
+    logout,
+    authLoading} =useAuth()
+console.log(user)
   const handleLogout = async () => {
-    await signOut();
+    await logout();
   };
   return (
     <div className="navbar bg-base-100 sticky top-0 md:px-16 px-5 z-10">
@@ -44,7 +49,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <a className=" text-xl font-bold">Tasty<br className="block md:hidden"></br> Delights</a>
+        <NavLink to={'/'} className=" text-xl font-bold">Tasty<br className="block md:hidden"></br> Delights</NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex items-center gap-6 px-1">
@@ -61,11 +66,8 @@ export default function Navbar() {
       </div>
       {!user?.email ? (
         <div className="navbar-end flex gap-4">
-          <Link to={"/login"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16">
-            Login
-          </Link>
-          <Link to={"/register"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16">
-            Registration
+          <Link to={"/login"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold ">
+            Login / SignUp
           </Link>
         </div>
       ) : (
@@ -91,3 +93,6 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default Navbar;
+ 

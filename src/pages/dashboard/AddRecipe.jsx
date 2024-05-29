@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const AddRecipe = () => {
   const [categories, setCategories] = useState();
@@ -34,7 +35,15 @@ const AddRecipe = () => {
       description,
     };
 
-    await axios.post("http://localhost:3000/recipes", recipeData);
+    await axios.post("http://localhost:3000/recipes", recipeData)
+    .then(res=>{
+      if(res?.status === 201){
+        console.log(res)
+        Swal.fire("New Recipe Added");
+        form.reset();
+
+      }
+    })
   };
   return (
     <div className="w-full px-16">
@@ -42,15 +51,15 @@ const AddRecipe = () => {
       <form onSubmit={handleCreateRecipe} className="w-full">
         <div className="mb-4">
           <label htmlFor="">Id </label>
-          <input type="text" name="id" className="w-full py-3 px-5 border" />
+          <input required type="text" name="id" className="w-full py-3 px-5 border" />
         </div>
         <div className="mb-4">
           <label htmlFor="">Title </label>
-          <input type="text" name="title" className="w-full py-3 px-5 border" />
+          <input required type="text" name="title" className="w-full py-3 px-5 border" />
         </div>
         <div className="mb-4">
           <label htmlFor="">Price </label>
-          <input
+          <input required
             type="number"
             name="price"
             className="w-full py-3 px-5 border"
@@ -69,7 +78,7 @@ const AddRecipe = () => {
 
         <div className="mb-4">
           <label htmlFor="">Description </label>
-          <textarea name="description" className="w-full py-3 px-5 border" />
+          <textarea required name="description" className="w-full py-3 px-5 border" />
         </div>
 
         <div className="mb-4">
