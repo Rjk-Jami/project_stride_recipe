@@ -52,7 +52,7 @@ export default function RecipeRow({ recipe , setRecipes}) {
       <td>{recipe?.price}</td>
       <td>{recipe?.category}</td>
       <td className="flex gap-4 items-center">
-        <NavLink to={"/"} className=" text-lg">
+        <NavLink to={`/dashboard/recipeDetails/${recipe?.id}`} className=" text-lg">
           <FaEye />
         </NavLink>
         <Link to={`/dashboard/edit-recipe/${recipe?.id}`} className=" text-lg">

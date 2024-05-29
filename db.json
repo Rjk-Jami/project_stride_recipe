@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Spaghetti Carbonara 2",
-      "price": 12.99,
+      "price": 2255.99,
       "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
       "image": "https://example.com/images/spaghetti-carbonara.jpg",
       "category": "Thai"
@@ -67,7 +67,7 @@
     {
       "id": "9",
       "title": "Margherita Pizza",
-      "price": 13.99,
+      "price": "13.99",
       "description": "Classic pizza topped with fresh tomatoes, mozzarella cheese, and basil.",
       "image": "https://example.com/images/margherita-pizza.jpg",
       "category": "Italian"
@@ -98,11 +98,17 @@
     },
     {
       "id": "14",
-      "title": "Ramen",
-      "price": 12.99,
-      "description": "A hearty Japanese noodle soup with meat, vegetables, and broth.",
-      "image": "https://example.com/images/ramen.jpg",
-      "category": "Japanese"
+      "title": "jamijami",
+      "price": "200",
+      "category": "Japanese",
+      "description": "good"
+    },
+    {
+      "id": "15",
+      "title": "jeba",
+      "price": "1",
+      "category": "Thai",
+      "description": "valona"
     }
   ],
   "categories": [

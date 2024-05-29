@@ -32,7 +32,7 @@ const EditRecipe = () => {
     const form = e.target;
 
     const title = form.title.value;
-    const price = form.price.value;
+    const price = parseFloat(form.price.value);
     const category = form.category.value;
     const description = form.description.value;
     const recipeData = {
@@ -54,7 +54,7 @@ const EditRecipe = () => {
   return (
     <div className="w-full px-16">
       <div className="flex justify-between items-center">
-      <h1 className="text-4xl mb-4">Add Recipe</h1>
+      <h1 className="text-4xl mb-4">Update Recipe</h1>
       <NavLink to={'/dashboard/manage-recipes'}>
         
         <div className="flex gap-2 items-center  z-40 m-5 hover:text-blue-600">
@@ -109,7 +109,7 @@ const EditRecipe = () => {
         <div className="mb-4">
           <input
             type="submit"
-            value={"Add Recipe"}
+            value={"Update Recipe"}
             className="w-full btn py-3 px-5 border btn-neutral"
           />
         </div>
