@@ -38,18 +38,7 @@ export default function DashboardHome() {
 
           <div className="h-[1px] bg-black w-full mt-2"></div>
           <p className="py-6"></p>
-          <div className="flex w-full justify-around">
-            <div className="">
-              <p>
-                category: <span className="font-bold"></span>
-              </p>
-            </div>
-            <div className="">
-              <p>
-                Price: <span className="font-bold"></span>
-              </p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
