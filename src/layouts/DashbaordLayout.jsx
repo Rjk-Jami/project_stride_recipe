@@ -1,18 +1,29 @@
 import { useSignOut } from "react-firebase-hooks/auth";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
 
-export default function DashbaordLayout() {
+export default function 
+DashbaordLayout() {
   const {user,
     googleLogin, 
     EmailPassLogin,
     createUser,
     logout,
     authLoading} =useAuth()
+    const navigate = useNavigate()
+    const handleLogout = async () => {
+      logout().then(() => {
+        // Sign-out successful.
+        console.log("jamijami")
 
-  const handleLogout = async () => {
-    await logout();
-  };
+        navigate('/')
+        window.refresh()
+      }).catch((error) => {
+        // An error happened.
+      });
+    };
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import Swal from "sweetalert2";
 const EditRecipe = () => {
   const { id } = useParams();
   const [recipeDetails, setRecipeDetails] = useState();
@@ -32,7 +33,7 @@ const EditRecipe = () => {
     const form = e.target;
 
     const title = form.title.value;
-    const price = parseFloat(form.price.value);
+    const price = form.price.value
     const category = form.category.value;
     const description = form.description.value;
     const recipeData = {
@@ -45,7 +46,11 @@ const EditRecipe = () => {
 
     await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData)
     .then(res=>{
-      console.log(res)
+      if(res?.status === 200){
+        console.log(res)
+        Swal.fire("Recipe is Updated");
+       
+      }
     })
   };
   const navigate = useNavigate();
@@ -76,9 +81,10 @@ const EditRecipe = () => {
         <div className="mb-4">
           <label htmlFor="">Price </label>
           <input
+           step="any"
             type="number"
             name="price"
-            defaultValue={recipeDetails?.price}
+            defaultValue={recipeDetails?.price && recipeDetails?.price}
             className="w-full py-3 px-5 border"
           />
         </div>

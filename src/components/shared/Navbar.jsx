@@ -1,19 +1,52 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-import React from 'react';
+import React from "react";
 
 const Navbar = () => {
-  const {user,
-    googleLogin, 
-    EmailPassLogin,
-    createUser,
-    logout,
-    authLoading} =useAuth()
-console.log(user)
-  const handleLogout = async () => {
-    await logout();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
   };
+
+  const navbar = (
+    <>
+      {user ? (
+        <>
+          <div>
+            <button
+              className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+          <div>
+            <Link
+              to={"/dashboard"}
+              className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16"
+            >
+              Dashboard
+            </Link>
+          </div>
+
+          <div className="avatar placeholder">
+            <div className="bg-neutral text-neutral-content rounded-full w-8">
+              <span>AS</span>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Link
+          to={"/login"}
+          className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold "
+        >
+          Login / SignUp
+        </Link>
+      )}
+    </>
+  );
   return (
     <div className="navbar bg-base-100 sticky top-0 md:px-16 px-5 z-10">
       <div className="navbar-start">
@@ -49,7 +82,9 @@ console.log(user)
             </li>
           </ul>
         </div>
-        <NavLink to={'/'} className=" text-xl font-bold">Tasty<br className="block md:hidden"></br> Delights</NavLink>
+        <NavLink to={"/"} className=" text-xl font-bold">
+          Tasty<br className="block md:hidden"></br> Delights
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex items-center gap-6 px-1">
@@ -64,35 +99,10 @@ console.log(user)
           </li>
         </ul>
       </div>
-      {!user?.email ? (
-        <div className="navbar-end flex gap-4">
-          <Link to={"/login"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold ">
-            Login / SignUp
-          </Link>
-        </div>
-      ) : (
-        <div className="navbar-end flex gap-4">
-          <div>
-            <button className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-          <div>
-            <Link to={"/dashboard"} className="btn btn-ghost btn-link no-underline hover:no-underline px-0 text-black hover:font-bold md:w-16">
-              Dashboard
-            </Link>
-          </div>
 
-          <div className="avatar placeholder">
-            <div className="bg-neutral text-neutral-content rounded-full w-8">
-              <span>AS</span>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="navbar-end flex gap-4 ">{navbar}</div>
     </div>
   );
-}
+};
 
 export default Navbar;
- 

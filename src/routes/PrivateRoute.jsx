@@ -14,8 +14,10 @@ export default function PrivateRoute({ children }) {
   if (authLoading) {
     return <p>Loading...</p>;
   }
-  if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (user) {
+    return children;
+   
   }
-  return children;
+  return <Navigate to="/login" state={{ from: location }} replace />;
+ 
 }
